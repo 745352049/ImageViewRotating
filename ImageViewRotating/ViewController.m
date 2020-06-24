@@ -12,10 +12,11 @@
 
 #import "YTRotatingView.h"
 
-@interface ViewController ()
+@interface ViewController () <CAAnimationDelegate>
 
 @property (nonatomic, strong) YTRotatingImageView *imageV;
 @property (nonatomic, strong) YTRotatingView *rotateView;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
 
 @end
 
@@ -36,6 +37,63 @@
     imageView.frame = self.rotateView.bounds;
     [self.rotateView addSubview:imageView];
     [self.rotateView startRotatingWithAngle:M_PI*2.0 Duration:4.0 RepeatCount:5];
+    
+    CAShapeLayer *layer = [CAShapeLayer layer];
+    layer.frame = self.view.bounds;
+    [self.view.layer addSublayer:layer];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(100, CGRectGetMaxY(self.rotateView.frame) + 20)];
+    [path addLineToPoint:CGPointMake(400, CGRectGetMaxY(self.rotateView.frame) + 20)];
+    
+    layer.path = path.CGPath;
+    layer.lineWidth = 4.0;
+    layer.strokeColor = [UIColor blueColor].CGColor;
+    layer.fillColor = nil;
+    layer.strokeStart = 0;
+    layer.strokeEnd = 1;
+    layer.lineJoin = kCALineJoinRound;
+    layer.lineCap = kCALineJoinRound;
+    
+    self.shapeLayer = layer;
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.duration = 1.0;
+    animation.fromValue = @0;
+    animation.toValue = @1;
+    animation.delegate = self;
+    animation.removedOnCompletion = NO;
+    [animation setValue:@"1" forKey:@"2"];
+    [layer addAnimation:animation forKey:@"removeRippleLayer"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if ([self.shapeLayer animationForKey:@"removeRippleLayer"] == anim) {
+        
+    }
+    // 或者
+    if([[anim valueForKey:@"2"] isEqualToString:@"1"]) {
+        self.shapeLayer.lineWidth = 8.0;
+        self.shapeLayer.strokeColor = [UIColor redColor].CGColor;
+        
+        [self.shapeLayer addAnimation:[self opacityForever_Animation:2] forKey:nil];
+    }
+}
+
+- (CABasicAnimation *)opacityForever_Animation:(float)time {
+    // 必须写opacity才行
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    // 这是透明度
+    animation.fromValue = [NSNumber numberWithFloat:1.0f];
+    animation.toValue = [NSNumber numberWithFloat:0.0f];
+    animation.autoreverses = YES;
+    animation.duration = time;
+    animation.repeatCount = MAXFLOAT;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    // 没有的话是均匀的动画
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    return animation;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
