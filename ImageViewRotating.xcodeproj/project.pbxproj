@@ -13,8 +13,9 @@
 		D53849E624A2F0960074120F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D53849E524A2F0960074120F /* Assets.xcassets */; };
 		D53849E924A2F0960074120F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D53849E724A2F0960074120F /* LaunchScreen.storyboard */; };
 		D53849EC24A2F0960074120F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D53849EB24A2F0960074120F /* main.m */; };
-		D53849F424A2F3EB0074120F /* YTRotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D53849F324A2F3EB0074120F /* YTRotatingImageView.m */; };
 		D53849F624A2F4AE0074120F /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = D53849F524A2F4AE0074120F /* Image.png */; };
+		D53849FC24A333740074120F /* YTRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D53849FB24A333740074120F /* YTRotatingView.m */; };
+		D53849FF24A336F60074120F /* YTRotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D53849FE24A336F60074120F /* YTRotatingImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +29,11 @@
 		D53849E824A2F0960074120F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D53849EA24A2F0960074120F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D53849EB24A2F0960074120F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D53849F224A2F3EB0074120F /* YTRotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTRotatingImageView.h; sourceTree = "<group>"; };
-		D53849F324A2F3EB0074120F /* YTRotatingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTRotatingImageView.m; sourceTree = "<group>"; };
 		D53849F524A2F4AE0074120F /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
+		D53849FA24A333740074120F /* YTRotatingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTRotatingView.h; sourceTree = "<group>"; };
+		D53849FB24A333740074120F /* YTRotatingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTRotatingView.m; sourceTree = "<group>"; };
+		D53849FD24A336F60074120F /* YTRotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTRotatingImageView.h; sourceTree = "<group>"; };
+		D53849FE24A336F60074120F /* YTRotatingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTRotatingImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				D53849F524A2F4AE0074120F /* Image.png */,
-				D53849F224A2F3EB0074120F /* YTRotatingImageView.h */,
-				D53849F324A2F3EB0074120F /* YTRotatingImageView.m */,
+				D53849FD24A336F60074120F /* YTRotatingImageView.h */,
+				D53849FE24A336F60074120F /* YTRotatingImageView.m */,
+				D53849FA24A333740074120F /* YTRotatingView.h */,
+				D53849FB24A333740074120F /* YTRotatingView.m */,
 				D53849D924A2F0950074120F /* AppDelegate.h */,
 				D53849DA24A2F0950074120F /* AppDelegate.m */,
 				D53849DF24A2F0950074120F /* ViewController.h */,
@@ -153,7 +158,8 @@
 				D53849E124A2F0950074120F /* ViewController.m in Sources */,
 				D53849DB24A2F0950074120F /* AppDelegate.m in Sources */,
 				D53849EC24A2F0960074120F /* main.m in Sources */,
-				D53849F424A2F3EB0074120F /* YTRotatingImageView.m in Sources */,
+				D53849FC24A333740074120F /* YTRotatingView.m in Sources */,
+				D53849FF24A336F60074120F /* YTRotatingImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
