@@ -126,7 +126,7 @@
             self.layer.timeOffset = 0.0;
             self.layer.beginTime = 0.0;
             
-            [self.layer removeAnimationForKey:@"YTRotatingView"];
+            [self.layer removeAnimationForKey:@"YTRotatingViewLayer"];
             
             _isRotating = NO;
             _isPauseRotating = NO;
@@ -157,7 +157,7 @@
     self.layer.timeOffset = 0.0;
     self.layer.beginTime = 0.0;
     
-    [self.layer removeAnimationForKey:@"YTRotatingView"];
+    [self.layer removeAnimationForKey:@"YTRotatingViewLayer"];
     
     _isRotating = NO;
     _isPauseRotating = NO;
