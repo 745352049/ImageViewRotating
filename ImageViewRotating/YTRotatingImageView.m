@@ -4,7 +4,7 @@
 
 #import "YTRotatingImageView.h"
 
-@interface YTRotatingImageView () {
+@interface YTRotatingImageView () <CAAnimationDelegate> {
     // 旋转角度
     float _angle;
     // 旋转周期
@@ -106,7 +106,18 @@
         rotateAnimation.fillMode = kCAFillModeForwards;
         rotateAnimation.duration = duration;
         rotateAnimation.repeatCount = repeatCount;
-        [self.layer addAnimation:rotateAnimation forKey:@"YTRotatingImageView"];
+        [rotateAnimation setValue:@"YTRotatingImageViewValue" forKey:@"YTRotatingImageViewKey"];
+        rotateAnimation.delegate = self;
+        [self.layer addAnimation:rotateAnimation forKey:@"YTRotatingImageViewLayer"];
+    }
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag == NO) return;
+    if([[anim valueForKey:@"YTRotatingImageViewKey"] isEqualToString:@"YTRotatingImageViewValue"]) {
+        if (self.rotatingCompleteBlock) {
+            self.rotatingCompleteBlock(self);
+        }
     }
 }
 

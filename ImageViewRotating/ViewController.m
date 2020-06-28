@@ -30,13 +30,19 @@
     self.imageV.layer.cornerRadius = 100;
     [self.view addSubview:self.imageV];
     self.imageV.isResetWithResume = YES;
-    [self.imageV startRotatingWithAngle:M_PI*2.0 Duration:5.0 RepeatCount:MAXFLOAT];
+    [self.imageV startRotatingWithAngle:M_PI*2.0 Duration:2.0 RepeatCount:4];
+    self.imageV.rotatingCompleteBlock = ^(YTRotatingImageView * _Nonnull rotatingImageView) {
+        NSLog(@"YTRotatingImageView 旋转完成");
+    };
     
     [self.view addSubview:self.rotateView];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Image"]];
     imageView.frame = self.rotateView.bounds;
     [self.rotateView addSubview:imageView];
-    [self.rotateView startRotatingWithAngle:M_PI*2.0 Duration:4.0 RepeatCount:5];
+    [self.rotateView startRotatingWithAngle:M_PI*2.0 Duration:2.0 RepeatCount:4];
+    self.rotateView.rotatingCompleteBlock = ^(YTRotatingView * _Nonnull rotatingView) {
+        NSLog(@"YTRotatingView 旋转完成");
+    };
     
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.frame = self.view.bounds;
@@ -69,10 +75,11 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if ([self.shapeLayer animationForKey:@"removeRippleLayer"] == anim) {
-        
+        NSLog(@"removeRippleLayer 1");
     }
     // 或者
     if([[anim valueForKey:@"2"] isEqualToString:@"1"]) {
+        NSLog(@"removeRippleLayer 2");
         self.shapeLayer.lineWidth = 8.0;
         self.shapeLayer.strokeColor = [UIColor redColor].CGColor;
         
